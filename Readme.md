@@ -6,7 +6,7 @@ This platform is a one-stop solution designed exclusively for MCA students to ac
 
 ---
 
-## 🌐 About the Website  
+## 🌐  the Website  
 
 The **MCA Community Hub** is a web-based repository built using:
 - **HTML, CSS, and JavaScript** for a dynamic, responsive, and user-friendly interface.
