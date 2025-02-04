@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
         .material-list {
             margin-top: 20px;
         }
+
         .material-item {
             display: flex;
             justify-content: space-between;
@@ -21,114 +23,138 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="container my-5">
-    <h1 class="text-center mb-4">Study Materials</h1>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Study Materials</h1>
 
-    <!-- Subject and Module Selection -->
-    <div class="row mb-4">
-        <div class="col-md-6">
-            <label for="subjectSelect" class="form-label">Select Subject</label>
-            <select id="subjectSelect" class="form-select">
-                <option value="" disabled selected>Choose a Subject</option>
-                <option value="Data Structure">Data Structure</option>
-                <option value="Software Engineering">Software Engineering</option>
-                <option value="Maths">Maths</option>
-                <option value="Digital Fundamental">Digital Fundamental</option>
-            </select>
+        <!-- Subject and Module Selection -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label for="subjectSelect" class="form-label">Select Subject</label>
+                <select id="subjectSelect" class="form-select">
+                    <option value="" disabled selected>Choose a Subject</option>
+                    <option value="Data Structure">Data Structure</option>
+                    <option value="Software Engineering">Software Engineering</option>
+                    <option value="Maths">Maths</option>
+                    <option value="Digital Fundamental">Digital Fundamental</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="moduleSelect" class="form-label">Select Module</label>
+                <select id="moduleSelect" class="form-select" disabled>
+                    <option value="" disabled selected>Choose a Module</option>
+                </select>
+            </div>
         </div>
-        <div class="col-md-6">
-            <label for="moduleSelect" class="form-label">Select Module</label>
-            <select id="moduleSelect" class="form-select" disabled>
-                <option value="" disabled selected>Choose a Module</option>
-            </select>
+
+        <!-- Study Material List -->
+        <div id="materialContainer" class="material-list">
+            <!-- Study materials will be dynamically added here -->
         </div>
     </div>
 
-    <!-- Study Material List -->
-    <div id="materialContainer" class="material-list">
-        <!-- Study materials will be dynamically added here -->
-    </div>
-</div>
+    <script>
+        // Materials data
+        const materials = {
+            "Data Structure": {
+                1: ["Array", "linked list and its variants", "Stack", "Queue", "Set Data Structure:- Representation of sets, Set implementation using bit string", "Hashing :- SImple hash functions, Collision and Collision Resolution techniques", "Amortised Analysis - Aggregate, Accounting and Potential Methods", "Amortised Analyisis", "Disjoint sets- representations, Union, Find algorithms"],
+                2: ["Balanced Binary Search trees", "Red-Black trees- Properties of Red Black trees, Rotations, Insertion, Deletion", "B-Trees- Basic operations on B-Trees – Insertion and Deletion", "Splay Trees", "Suffix Trees"],
+                3: ["Binomial Heaps, Binomial Heap operations and Analysis", "Fibonacci Heaps, Fibonacci Heap operations and Analysis"],
+                4: ["Representation of graphs", "Depth First and Breadth First Traversals", "Topological Sorting", "BCC", "Strongly connected Components and Biconnected Components Minimum Cost Spanning Tree", "Prim\’s Algorithm", "Kruskal\’ Algorithm", "Dijikstra\’s single source shortest paths algorithm"],
+                5: ["Blockchain Architecture", "Blockchain Data Structures and Data types", "Contract Data", "Problems to be solved in Blockchain data analysis"]
+            },
+            "Software Engineering": {
+                1: ["What is Software Engineering, Characteristics of Software",
+                    "Life cycle of a software system: software design, development, testing, deployment, Maintenance",
+                    "Project planning phase", "COCOMO", "staffing and personnel planning", "Software Engineering models: Predictive software engineering models, model approaches, prerequisite", "Software requirements specification"
+                ],
+                2: ["Programming Style Guides and Coding Standards", "Literate programming and Software documentation",
+                    "Documentation generators, Javadoc, phpDocumentor.",
+                    "Version control systems basic concepts",
 
-<script>
-    // Materials data
-    const materials = {
-        "Data Structure": {
-            1: ["Material 1.1", "Material 1.2", "Material 1.3"],
-            2: ["Material 2.1", "Material 2.2", "Material 2.3"],
-            3: ["Material 3.1", "Material 3.2", "Material 3.3"],
-            4: ["Material 4.1", "Material 4.2", "Material 4.3"],
-            5: ["Material 5.1", "Material 5.2", "Material 5.3"]
-        },
-        "Software Engineering": {
-            1: ["Material 1.1", "Material 1.2", "Material 1.3"],
-            2: ["Material 2.1", "Material 2.2", "Material 2.3"],
-            3: ["Material 3.1", "Material 3.2", "Material 3.3"],
-            4: ["Material 4.1", "Material 4.2", "Material 4.3"],
-            5: ["Material 5.1", "Material 5.2", "Material 5.3"]
-        },
-        "Maths": {
-            1: ["Material 1.1", "Material 1.2", "Material 1.3"],
-            2: ["Material 2.1", "Material 2.2", "Material 2.3"],
-            3: ["Material 3.1", "Material 3.2", "Material 3.3"],
-            4: ["Material 4.1", "Material 4.2", "Material 4.3"],
-            5: ["Material 5.1", "Material 5.2", "Material 5.3"]
-        },
-        "Digital Fundamental": {
-            1: ["Material 1.1", "Material 1.2", "Material 1.3"],
-            2: ["Material 2.1", "Material 2.2", "Material 2.3"],
-            3: ["Material 3.1", "Material 3.2", "Material 3.3"],
-            4: ["Material 4.1", "Material 4.2", "Material 4.3"],
-            5: ["Material 5.1", "Material 5.2", "Material 5.3"]
-        }
-    };
+                    "Concept of Distributed version control system and Git",
+                    "Setting up Git",
+                    "Core operations in Git version control system using command line interface",
+                    "Clone a repository",
+                    "View history",
+                    "Modifying files",
+                    "Branching",
+                    "Push changes",
+                    "Clone operation",
+                    "add", "commit", "log", "diff",
+                    "conflict resolution",
+                    "Pushing changes to the master",
+                    "Using Git in IDEs and UI based tools",
+                    "Software Quality: Understanding and ensuring requirements specification quality, design quality, quality in software development, conformance quality"],
+                3: ["OOP Concepts ",
+                    "Design Patterns: Basic concepts of Design patterns,\nHow to select a design pattern,\nCreational patterns,\nStructural patterns,\nBehavioural patterns.",
+                    "Concept of Anti-patterns.",
+                    "Unit testing and Unit Testing frameworks",
+                    "The xUnit Architecture :\nWriting Unit Tests using at least one of Junit(for Java),\nunittest(for Python) or phpdbg(PHP), \nWriting tests with Assertions,\ndefining and using Custom Assertions,\nsingle condition tests, \ntesting for expected errors,\nAbstract test. "],
+                4: ["Material 4.1", "Material 4.2", "Material 4.3"],
+                5: ["Material 5.1", "Material 5.2", "Material 5.3"]
+            },
+            "Maths": {
+                1: ["Material 1.1", "Material 1.2", "Material 1.3"],
+                2: ["Material 2.1", "Material 2.2", "Material 2.3"],
+                3: ["Material 3.1", "Material 3.2", "Material 3.3"],
+                4: ["Material 4.1", "Material 4.2", "Material 4.3"],
+                5: ["Material 5.1", "Material 5.2", "Material 5.3"]
+            },
+            "Digital Fundamental": {
+                1: ["Material 1.1", "Material 1.2", "Material 1.3"],
+                2: ["Material 2.1", "Material 2.2", "Material 2.3"],
+                3: ["Material 3.1", "Material 3.2", "Material 3.3"],
+                4: ["Material 4.1", "Material 4.2", "Material 4.3"],
+                5: ["Material 5.1", "Material 5.2", "Material 5.3"]
+            }
+        };
 
-    const subjectSelect = document.getElementById("subjectSelect");
-    const moduleSelect = document.getElementById("moduleSelect");
-    const materialContainer = document.getElementById("materialContainer");
+        const subjectSelect = document.getElementById("subjectSelect");
+        const moduleSelect = document.getElementById("moduleSelect");
+        const materialContainer = document.getElementById("materialContainer");
 
-    // Populate modules when subject is selected
-    subjectSelect.addEventListener("change", () => {
-        const subject = subjectSelect.value;
+        // Populate modules when subject is selected
+        subjectSelect.addEventListener("change", () => {
+            const subject = subjectSelect.value;
 
-        // Enable the module dropdown and populate it
-        moduleSelect.disabled = false;
-        moduleSelect.innerHTML = `<option value="" disabled selected>Choose a Module</option>`;
-        for (let i = 1; i <= 5; i++) {
-            const option = document.createElement("option");
-            option.value = i;
-            option.textContent = `Module ${i}`;
-            moduleSelect.appendChild(option);
-        }
-        // Clear previous materials
-        materialContainer.innerHTML = "";
-    });
+            // Enable the module dropdown and populate it
+            moduleSelect.disabled = false;
+            moduleSelect.innerHTML = `<option value="" disabled selected>Choose a Module</option>`;
+            for (let i = 1; i <= 5; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = `Module ${i}`;
+                moduleSelect.appendChild(option);
+            }
+            // Clear previous materials
+            materialContainer.innerHTML = "";
+        });
 
-    // Display materials when module is selected
-    moduleSelect.addEventListener("change", () => {
-        const subject = subjectSelect.value;
-        const module = moduleSelect.value;
+        // Display materials when module is selected
+        moduleSelect.addEventListener("change", () => {
+            const subject = subjectSelect.value;
+            const module = moduleSelect.value;
 
-        // Clear existing materials
-        materialContainer.innerHTML = "";
+            // Clear existing materials
+            materialContainer.innerHTML = "";
 
-        // Display materials for selected subject and module
-        if (materials[subject] && materials[subject][module]) {
-            materials[subject][module].forEach((material, index) => {
-                const materialItem = document.createElement("div");
-                materialItem.className = "material-item";
-                materialItem.innerHTML = `
+            // Display materials for selected subject and module
+            if (materials[subject] && materials[subject][module]) {
+                materials[subject][module].forEach((material, index) => {
+                    const materialItem = document.createElement("div");
+                    materialItem.className = "material-item";
+                    materialItem.innerHTML = `
                     <span>${material}</span>
-                    <a href="#" class="btn btn-primary btn-sm">Download</a>
+                    <a href="#" class="btn btn-primary btn-sm">View</a>
                 `;
-                materialContainer.appendChild(materialItem);
-            });
-        }
-    }); 
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+                    materialContainer.appendChild(materialItem);
+                });
+            }
+        }); 
+    </script>
 </body>
+
 </html>
